@@ -20,8 +20,11 @@ python3 -m venv "$VENV_DIR"
 sudo chown -R www-data:www-data "$VENV_DIR"
 sudo -u www-data bash -lc "$VENV_DIR/bin/pip install --upgrade pip"
 sudo -u www-data bash -lc "$VENV_DIR/bin/pip install flask==3.0.3"
-
-sudo -u www-data bash -lc "cd $APP_DIR && $VENV_DIR/bin/python db_init.py"
+sudo chown www-data:www-data /var/www/parspec/demo.db
+sudo chown -R www-data:www-data /var/www/parspec
+sudo chmod 664 /var/www/parspec/demo.db
+sudo chmod 775 /var/www/parspec
+sudo -u www-data bash -lc "cd /var/www/parspec && venv/bin/python db_init.py"
 
 if [ ! -f /etc/modsecurity/modsecurity.conf ]; then
   sudo cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
