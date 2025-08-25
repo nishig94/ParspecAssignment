@@ -13,10 +13,11 @@ sudo mkdir -p $APP_DIR
 sudo chown -R www-data:www-data $APP_DIR
 sudo chmod -R 775 $APP_DIR
 
-SRC_DIR="/home/ubuntu/parspec-sqli-flask"
+SRC_DIR="/home/ubuntu/ParspecAssignment"
 sudo rsync -a --delete "$SRC_DIR/app/" "$APP_DIR/"
 
-sudo -u www-data python3 -m venv "$VENV_DIR"
+python3 -m venv "$VENV_DIR"
+sudo chown -R www-data:www-data "$VENV_DIR"
 sudo -u www-data bash -lc "$VENV_DIR/bin/pip install --upgrade pip"
 sudo -u www-data bash -lc "$VENV_DIR/bin/pip install flask==3.0.3"
 
