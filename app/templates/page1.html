@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h2>Login (Vulnerable) — page1</h2>
+  <form method="POST" action="">
+    <input name="username" placeholder="username only" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div class="note">
+    Intentional SQLi vulnerability.<br>
+    Try payload: <code>' OR '1'='1</code>
+  </div>
+  {% if msg %}<div class="msg">{{ msg }}</div>{% endif %}
+{% endblock %}

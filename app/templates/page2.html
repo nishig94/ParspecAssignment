@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h2>Login (Protected) — page2</h2>
+  <form method="POST" action="">
+    <input name="username" placeholder="username only" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div class="note">
+    Protected by ModSecurity (OWASP CRS) + parameterized queries.<br>
+    SQLi attempts should be blocked with HTTP 403.
+  </div>
+  {% if msg %}<div class="msg">{{ msg }}</div>{% endif %}
+{% endblock %}
